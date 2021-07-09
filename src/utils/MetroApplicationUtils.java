@@ -1,3 +1,6 @@
+package utils;
+
+import metro.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,6 +46,9 @@ public class MetroApplicationUtils {
             String connectLine;
             String connectStation;
             switch (command) {
+                case ("/help"):
+                    help();
+                    break;
                 case ("/exit"):
                     return;
                 case ("/output"):
@@ -145,23 +151,6 @@ public class MetroApplicationUtils {
             }
             System.out.println();
         } else {
-//            stations.add(0, "depot");
-//            stations.add("depot");
-//            int counter = 0;
-//            for (int i = 0; i < stations.size(); i++) {
-//                if (counter == 0) {
-//                    System.out.print(stations.get(i));
-//                } else {
-//                    System.out.print(" - " + stations.get(i));
-//                }
-//                counter++;
-//                if (counter == 3 && i != stations.size() - 1) {
-//                    i -= 2;
-//                    counter = 0;
-//                    System.out.println();
-//                }
-//            }
-//            System.out.println();
             System.out.println("depot");
             for (MetroStation station : stations) {
                 System.out.println(station.getName());
@@ -182,6 +171,18 @@ public class MetroApplicationUtils {
         metro.removeStation(stationName, lineName);
     }
 
+    public void help() {
+        System.out.println("Choose one of the command:\n" +
+                "/help - list of command\n" +
+                "/append <lineName> <stationName> - add station to the end of the metro line\n" +
+                "/add-head <lineName> <stationName> - add station to the beginning of the metro line\n" +
+                "/remove <lineName> <stationName> - remove station in the metro line\n" +
+                "/output <lineName> - print stations of the metro line\n" +
+                "/connect <lineName1> <stationName1> <lineName2> <stationName2> - connect stations of the different metro lines\n" +
+                "/route <lineName1> <stationName1> <lineName2> <stationName2> - print the shortest route from one station to another station\n" +
+                "/fastest-route <lineName1> <stationName1> <lineName2> <stationName2> - print the fastest route from one station to another station\n" +
+                "/exit - end the work application");
+    }
     private boolean parserJSON(String fileName) throws IOException {
         int stationNum = 1;
         Map<Integer, MetroStation> currentStations = null;
