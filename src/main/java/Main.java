@@ -12,8 +12,7 @@ public class Main {
         System.out.println("Введите имя файла, хранящего информацию о карте метрополитена:");
         String fileName = "./resources/" + scanner.nextLine();
         MetroGraph metro = new MetroGraph();
-        MetroApplicationUtils metroManager = new
-                MetroApplicationUtils(fileName, metro);
+        MetroApplicationUtils metroManager = new MetroApplicationUtils(fileName, metro);
         if (metroManager.isFileExist()) {
             metroManager.help();
             metroManager.metroApplication();

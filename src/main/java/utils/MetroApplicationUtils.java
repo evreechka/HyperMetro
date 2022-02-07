@@ -1,18 +1,17 @@
 package utils;
 
 import metro.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
 public class MetroApplicationUtils {
-    private final MetroGraph metro;
+    private MetroGraph metro;
     private final boolean isFileExist;
 
-    public MetroApplicationUtils(String fileName, MetroGraph metro) throws IOException {
-        this.metro = metro;
+    public MetroApplicationUtils(String fileName, MetroGraph metroGraph) throws IOException {
+        metro = metroGraph;
         isFileExist = parserJSON(fileName);
         metro.createGraph();
     }
